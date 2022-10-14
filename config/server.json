@@ -1,14 +1,3 @@
 {
-	"host": "160.85.252.221",
-	"port": 27017,
-	"user": "spot-the-bot",
-	"password": "mongo4spotter",
-	"database_name": "static_context_eval",
-	"package_collection_name": "packed-dialogues-full-empathetic-comp-BL400-usr_ret",
-	"sampled_collection_name": "sampled-dialogues-full-empathetic-comp-BL400-usr_ret",
-	"labelled_collection_name": "labelled-dialogues-full-empathetic-comp-BL400-usr_ret",
-	"local_port": 5001,
-	"max_package_per_user": 3,
-	"unlabelled_data": "sampled-dialogues-autojudge-tournament-convai",
-	"auto_judge_outdir": "leave-bot-out-test"
+ "local_port": 5000
 }
