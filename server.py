@@ -1,12 +1,13 @@
 from flask import Flask
 import backend.test_api as test_api
+import backend.static_file_query as static_file
 from backend.config import load_config
 
 config = load_config()
 
 app = Flask(__name__)
 
-API_MODULES = [test_api]
+API_MODULES = [test_api, static_file]
 
 
 def register_route(url_path, name, fn, methods=['GET']):
