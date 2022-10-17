@@ -1,13 +1,16 @@
 from flask import Flask
 import backend.test_api as test_api
 import backend.static_file_query as static_file
+import backend.value_computation as val_comp
+import backend.plot_api as plt_api
 from backend.config import load_config
+
 
 config = load_config()
 
 app = Flask(__name__)
 
-API_MODULES = [test_api, static_file]
+API_MODULES = [test_api, static_file, val_comp, plt_api]
 
 
 def register_route(url_path, name, fn, methods=['GET']):

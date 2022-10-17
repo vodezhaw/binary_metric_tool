@@ -1,37 +1,28 @@
 import axios from "axios";
 import {config} from "process";
 
-const GENERATE_IMAGE = '/api/generate_image';
-const GENERATE_IMAGES = '/api/generate_images';
-const UPSCALE_IMAGE = '/api/upscale_image';
+const GET_HEADERS = '/api/get_headers';
+const GET_TABLE = '/api/get_table_for_header_values';
+const GET_SINGLE_VALUE = '/api/compute_single_value';
+const GET_PLOT = '/api/get_plot_for_table';
 const SESSION_ID = '/api/new_session';
 const UPGRADE_PROMPT = '/api/upgrade_propmt';
 const GET_TRANSCRIPTION = '/api/get_transcription';
 
 
 export default class ApiClient {
-
-    drawImage(_data) {
-        return axios.post(GENERATE_IMAGE, _data, config={responseType: 'blob'});
+    getHeaders() {
+        return axios.get(GET_HEADERS);
     }
 
-    drawImages(_data) {
-        return axios.post(GENERATE_IMAGES, _data, config={responseType: 'blob'});
+    get_table_for_header_values(data) {
+        return axios.get(GET_TABLE, {params: data});
     }
 
-    upscaleImage(_data) {
-        return axios.post(UPSCALE_IMAGE, _data, config={responseType: 'blob'});
+    get_single_value_header_values(data) {
+        return axios.get(GET_SINGLE_VALUE, {params: data});
     }
-
-    upgradePropmpt(_data) {
-        return axios.post(UPGRADE_PROMPT, _data);
-    }
-
-    getTranscript(_data) {
-        return axios.post(GET_TRANSCRIPTION, _data);
-    }
-
-    get_session() {
-        return axios.get(SESSION_ID);
+    get_plot(data) {
+        return axios.post(GET_PLOT, data, config={responseType: 'blob'});
     }
 }

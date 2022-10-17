@@ -1,17 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
+import BinTable from "./BinTable";
 
 function App() {
-
-    const [data, setData] = useState([{}])
-
-    useEffect(() => {
-        fetch("/api/members").then(
-            res => res.json()
-        ).then(
-            data => {setData(data)}
-        )
-    }, [])
-
     return (
         <div className="App">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -20,11 +10,7 @@ function App() {
                 </div>
             </nav>
             <div className="container">
-                {(typeof data.members === "undefined") ? (<p>Loading .... </p>) : (
-                    data.members.map((member, i) => (
-                        <p key={i}>{member}</p>
-                    ))
-                )}
+                <BinTable />
             </div>
         </div>
     );
