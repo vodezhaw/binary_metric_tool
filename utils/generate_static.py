@@ -21,6 +21,9 @@ alpha_range = list(range(0, 110, 10))
 
 out_file = Path("./data/static_file.jsonl")
 
+if not out_file.exists():
+    out_file.touch()
+
 done_already = set()
 with out_file.open('r') as fin:
     for line in fin:
