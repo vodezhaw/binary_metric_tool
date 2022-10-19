@@ -51,7 +51,14 @@ for n_tuple in tqdm(product(human_ratings_range, human_rho_eta_range, binary_rat
         'alpha': n_tuple[5] / 100,
     }
 
-    line['epsilon'] = estimate_epsilon(**line)
+    line['epsilon'] = estimate_epsilon(
+        n_human=line['n_human_rating'],
+        n_rho_eta=line['n_human_rho_eta'],
+        n_metric=line['n_binary_rating'],
+        rho=line['rho'],
+        eta=line['eta'],
+        alpha=line['alpha'],
+    )
 
     j_line = json.dumps(line)
 
