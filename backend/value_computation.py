@@ -2,12 +2,23 @@ import random
 import json
 from flask import request
 
+from backend.estimation import estimate_epsilon
+
 
 def compute_single_value():
     header_data = json.loads(request.args.get('data', None))
-    header_sum = sum([val for k, val in header_data.items()])
+
+    eps = estimate_epsilon(
+        n_human=header_data['n_human_rating'],
+        n_rho_eta=header_data['n_human_rho_eta'],
+        n_metric=header_data['n_binary_rating'],
+        rho=header_data['rho'] / 100.,
+        eta=header_data['eta'] / 100.,
+        alpha=header_data['alpha'] / 100.,
+    )
+
     return {
-        'value': header_sum
+        'value': eps,
     }
 
 
