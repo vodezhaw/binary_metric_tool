@@ -27,4 +27,6 @@ for api_module in API_MODULES:
         register_route(r['url'], r['name'], r['fn'], r['methods'])
 
 if __name__ == "__main__":
+    import numpyro
+    numpyro.set_host_device_count(8)
     app.run(host='localhost', port=config['local_port'], debug=True)
